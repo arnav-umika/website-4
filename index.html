@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Love Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0; /* Remove default margin to ensure full-page scroll */
+        }
+        #content {
+            font-size: 24px;
+            color: #ff0000; /* Red color for emphasis */
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        I love you
+    </div>
+
+    <script>
+        // Function to continuously append 'I love you' as the user scrolls down
+        function appendLove() {
+            document.getElementById("content").innerHTML += "<br>I love you"; // Append "I love you" with line break
+        }
+
+        // Attach the appendLove function to the scroll event
+        window.addEventListener('scroll', appendLove);
+
+        // Function to handle the initial setup
+        function setup() {
+            const contentHeight = document.getElementById("content").offsetHeight;
+            const windowHeight = window.innerHeight;
+            if (contentHeight <= windowHeight) {
+                // If the content is shorter than the window height, append more content to fill the screen
+                while (document.getElementById("content").offsetHeight <= windowHeight) {
+                    document.getElementById("content").innerHTML += "<br>I love you";
+                }
+            }
+        }
+
+        // Call the setup function initially to fill the screen with content
+        setup();
+    </script>
+</body>
+</html>
